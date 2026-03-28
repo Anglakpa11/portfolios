@@ -1,0 +1,15 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  {/* Geometric interlocking logo */}
+  {/* L shape (Black) */}
+  <path 
+    d="M40 40V220C40 242.091 57.9086 260 80 260H260V180H120V40H40Z" 
+    fill="#1A1A1A" 
+  />
+  {/* n/G shape (Purple) */}
+  <path 
+    d="M140 40H320C342.091 40 360 57.9086 360 80V260H280V120H140V40Z" 
+    fill="#6C3BFF" 
+  />
+  {/* Central Dot */}
+  <circle cx="200" cy="150" r="20" fill="#1A1A1A" />
+</svg>
