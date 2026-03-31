@@ -12,6 +12,7 @@
     @apply bg-background text-foreground font-sans antialiased selection:bg-white selection:text-black;
     overscroll-behavior-y: none;
     cursor: none; /* Hide default cursor */
+    overflow-x: hidden;
   }
 
   a, button {

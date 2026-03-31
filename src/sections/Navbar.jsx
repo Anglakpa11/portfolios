@@ -7,7 +7,7 @@ const NavLink = ({ href, children }) => {
       href={href}
       initial="initial"
       whileHover="hover"
-      className="relative overflow-hidden block text-[#FFFFFF80] hover:text-foreground transition-colors text-[20px]"
+      className="relative overflow-hidden block text-[#FFFFFF] hover:text-[#FFFFFF] transition-colors text-[20px]"
     >
       <motion.div
         variants={{
@@ -51,16 +51,15 @@ export default function Navbar() {
         </a>
       </div>
 
-      <div className="hidden md:flex flex-1 items-center justify-end pr-26">
-        <nav className="flex items-center gap-32 text-[20px] tracking-[0.02em] font-medium">
+      <div className="hidden md:flex items-center gap-[70px]">
+        <nav className="flex items-center gap-[60px] text-[20px] tracking-[0.02em] font-medium">
           <NavLink href="#about">( ABOUT )</NavLink>
           <NavLink href="#services">( SERVICES )</NavLink>
         </nav>
+        <button className="flex items-center justify-center h-[44px] md:h-[52px] px-[20px] md:px-[24px] bg-white text-black rounded-[8px] font-semibold text-[20px] hover:bg-white/90 transition-colors shrink-0 leading-none">
+          Download resume
+        </button>
       </div>
-
-      <button className="flex items-center justify-center h-[44px] md:h-[52px] px-[20px] md:px-[24px] bg-white text-black rounded-[8px] font-semibold text-[20px] hover:bg-white/90 transition-colors shrink-0">
-        Download resume
-      </button>
     </motion.header>
   );
 }

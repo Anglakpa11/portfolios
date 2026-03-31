@@ -24,7 +24,7 @@ export default function Motivation() {
         <div className="px-[40px]">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
             <div className="md:col-span-8 md:col-start-3 text-center">
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-[#EDEDED] mb-12 italic leading-[1.1]">
+              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-[#FFFFFF] mb-12 italic leading-[1.1]">
                 "DESIGN IS NOT JUST ABOUT HOW IT LOOKS, BUT HOW IT FEELS AND SPEAKS TO THE HUMAN SOUL."
               </h2>
               <div className="w-24 h-1 bg-accent mx-auto" />
