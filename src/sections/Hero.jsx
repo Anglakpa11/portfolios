@@ -7,14 +7,14 @@ export default function Hero() {
   const scale = useTransform(scrollYProgress, [0, 0.3], [1.1, 0.9]);
 
   return (
-    <section id="hero" className="relative h-screen w-full flex flex-col pt-[140px] pb-[36px] px-[40px] overflow-hidden bg-background">
+    <section id="hero" className="relative h-screen min-h-[600px] w-full flex flex-col pt-[120px] md:pt-[140px] pb-[36px] px-[24px] md:px-[40px] overflow-hidden bg-background">
       <CustomCursor />
       <div className="absolute inset-0 z-0 pointer-events-none">
         <FloatingBalls />
       </div>
       
       {/* Text Group */}
-      <div className="flex flex-col mt-auto items-start text-left pb-[120px] z-10 w-full relative">
+      <div className="flex flex-col mt-auto items-start text-left pb-[80px] md:pb-[120px] z-10 w-full relative">
         {/* Small Label - Now above title */}
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -22,8 +22,8 @@ export default function Hero() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="flex items-center gap-3 mb-4"
         >
-          <Timer size={20} className="text-accent" />
-          <span className="text-[#FFFFFF] text-[14px] md:text-[18px] font-medium tracking-[0.1em] mt-0.5 uppercase">
+          <Timer size={18} className="text-accent" />
+          <span className="text-[#FFFFFF] text-[12px] md:text-[18px] font-medium tracking-[0.1em] mt-0.5 uppercase">
             KICKSTART YOUR UI/UX PROJECT
           </span>
         </motion.div>
@@ -32,7 +32,7 @@ export default function Hero() {
         <motion.div
             initial="initial"
             whileHover="hover"
-            className="flex flex-col items-start font-black leading-[0.8] tracking-[-0.04em] text-[#FFFFFF] cursor-default text-[60px] md:text-[140px] lg:text-[160px] relative z-10 select-none"
+            className="flex flex-col items-start font-black leading-[0.85] md:leading-[0.8] tracking-[-0.04em] text-[#FFFFFF] cursor-default text-[clamp(44px,14vw,60px)] md:text-[140px] lg:text-[160px] relative z-10 select-none"
         >
           {/* First Row: UX/UI -> ANG */}
           <div className="relative overflow-hidden h-max w-max flex items-center">
@@ -74,7 +74,7 @@ export default function Hero() {
           {/* Second Row: DESIGNER -> LAKPA */}
           <div className="relative overflow-hidden h-max w-max flex items-center">
             {/* Slide Out: DESIGNER */}
-            <div className="flex pt-4">
+            <div className="flex pt-2 md:pt-4">
               {"DESIGNER".split("").map((char, index) => (
                 <motion.span
                   key={index}
@@ -91,7 +91,7 @@ export default function Hero() {
             </div>
 
             {/* Slide In: LAKPA */}
-            <div className="absolute inset-x-0 flex pt-4">
+            <div className="absolute inset-x-0 flex pt-2 md:pt-4">
               {"LAKPA".split("").map((char, index) => (
                 <motion.span
                   key={index}
@@ -112,18 +112,18 @@ export default function Hero() {
       </div>
 
 
-      {/* Bottom Right Badges (Moved back from Left) */}
+      {/* Bottom Right Badges / CTA */}
       <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="absolute bottom-[36px] right-[40px] flex items-center gap-8 z-20"
+          className="absolute bottom-[24px] md:bottom-[36px] left-[24px] md:left-auto right-[24px] md:right-[40px] flex items-center justify-between md:justify-end gap-6 md:gap-8 z-20"
       >
         <motion.a
           href="#work"
           initial="initial"
           whileHover="hover"
-          className="relative overflow-hidden block text-[#FFFFFF] hover:text-[#FFFFFF] transition-colors text-[20px] font-medium"
+          className="relative overflow-hidden block text-[#FFFFFF] hover:text-[#FFFFFF] transition-colors text-[16px] md:text-[20px] font-medium"
         >
           <motion.div
             variants={{
@@ -146,8 +146,8 @@ export default function Hero() {
           </motion.div>
         </motion.a>
 
-        <div className="h-[44px] md:h-[52px] px-[16px] md:px-[20px] rounded-full bg-white text-black text-[14px] md:text-[16px] flex items-center gap-2 font-bold tracking-tight">
-          <svg width="14" height="14" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className="h-[40px] md:h-[52px] px-[14px] md:px-[20px] rounded-full bg-white text-black text-[12px] md:text-[16px] flex items-center gap-2 font-bold tracking-tight">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="md:w-[14px] md:h-[14px]">
             <path d="M6 0L12 6L6 12L0 6L6 0Z" fill="black" />
           </svg>
         </div>

@@ -13,8 +13,8 @@ export default function ImageZoom() {
   const scale = useTransform(scrollYProgress, [0, 1], [1.3, 1]);
 
   return (
-    <section ref={containerRef} className="w-full bg-black flex flex-col relative pb-12">
-      <div className="relative w-full h-[60vh] md:h-[776px] overflow-hidden group">
+    <section ref={containerRef} className="w-full bg-black flex flex-col relative pb-8 md:pb-12">
+      <div className="relative w-full h-[50vh] md:h-[776px] overflow-hidden group">
         <motion.div
           style={{ scale }}
           className="w-full h-full"
@@ -30,11 +30,11 @@ export default function ImageZoom() {
       </div>
 
       {/* Subtitle below image on the left side */}
-      <div className="w-full px-[40px] mt-[40px] flex justify-start">
+      <div className="w-full px-[24px] md:px-[40px] mt-[32px] md:mt-[40px] flex justify-start">
         <motion.div
           initial="initial"
           whileHover="hover"
-          className="relative overflow-hidden block text-[#FFFFFF] text-[24px] max-w-[600px] leading-relaxed font-medium cursor-pointer"
+          className="relative overflow-hidden block text-[#FFFFFF] text-[clamp(18px,4.5vw,24px)] md:text-[24px] max-w-[600px] leading-relaxed font-medium cursor-pointer"
         >
           <motion.div
             variants={{

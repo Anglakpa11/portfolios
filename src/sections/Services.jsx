@@ -24,11 +24,11 @@ export default function Services() {
   };
 
   return (
-    <Section id="services" className="bg-black text-white px-[40px] pt-0">
+    <Section id="services" className="bg-black text-white px-[24px] md:px-[40px] pt-0">
       <div className="flex flex-col mb-0 relative">
         {/* Sticky Header Wrapper */}
-        <div className="sticky top-0 z-20 bg-black pt-12 md:pt-[60px] pb-12">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12">
+        <div className="sticky top-0 z-20 bg-black pt-8 md:pt-[60px] pb-8 md:pb-12">
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 md:gap-12">
             {/* Header Part */}
             <div className="max-w-[800px] flex flex-col">
               <motion.h2 
@@ -36,7 +36,7 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0 }}
-                className="text-[12.5vw] md:text-[8vw] lg:text-[120px] font-bold uppercase leading-[0.8] tracking-[-0.04em] mb-4 md:mb-6 order-1"
+                className="text-[clamp(48px,12vw,64px)] md:text-[8vw] lg:text-[120px] font-bold uppercase leading-[0.8] tracking-[-0.04em] mb-4 md:mb-6 order-1"
               >
                 {servicesHeader.title}
               </motion.h2>
@@ -45,16 +45,16 @@ export default function Services() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-                className="text-[14px] md:text-[18px] font-bold uppercase tracking-[0.05em] leading-[1.4] text-white/80 order-2 mt-2"
+                className="text-[12px] md:text-[18px] font-bold uppercase tracking-[0.05em] leading-[1.4] text-white/70 order-2 mt-2"
               >
                 {servicesHeader.description}
               </motion.p>
             </div>
 
             {/* Action Button Part */}
-            <div className="flex items-center gap-6 group cursor-pointer">
-              <div className="w-[12px] h-[12px] bg-white rounded-full" />
-              <div className="bg-[#6C3BFF] h-[48px] px-8 flex items-center justify-center rounded-[4px] text-[12px] md:text-[14px] font-bold tracking-[0.1em] uppercase group-hover:bg-[#5a2ee0] transition-colors">
+            <div className="flex items-center gap-4 md:gap-6 group cursor-pointer">
+              <div className="w-[10px] h-[10px] md:w-[12px] md:h-[12px] bg-white rounded-full shrink-0" />
+              <div className="bg-[#6C3BFF] h-[40px] md:h-[48px] px-6 md:px-8 flex items-center justify-center rounded-[4px] text-[10px] md:text-[14px] font-bold tracking-[0.1em] uppercase group-hover:bg-[#5a2ee0] transition-colors">
                 DISCOVER
               </div>
             </div>
@@ -67,7 +67,7 @@ export default function Services() {
           <div className="hidden lg:block lg:w-1/2" />
 
           {/* Right side (content) */}
-          <div className="flex-1 flex flex-col pt-12">
+          <div className="flex-1 flex flex-col pt-8 md:pt-12">
             {services.map((service, index) => {
               const isExpanded = expandedIndex === index;
               return (
@@ -79,15 +79,17 @@ export default function Services() {
                   {/* Header / Clickable Area */}
                   <div
                     onClick={() => toggleExpand(index)}
-                    className="py-12 md:py-16 flex items-center justify-between cursor-pointer group hover:bg-white/[0.02] transition-colors px-4 -mx-4"
+                    className="py-10 md:py-16 flex items-center justify-between cursor-pointer group hover:bg-white/[0.02] transition-colors px-2 md:px-4 -mx-2 md:-mx-4"
                   >
-                    <div className="flex items-center gap-10 md:gap-16">
-                      <ServiceIcon title={service.title} />
-                      <h3 className="text-[32px] md:text-[48px] lg:text-[60px] font-bold uppercase tracking-tight leading-none group-hover:translate-x-4 transition-transform duration-500">
+                    <div className="flex items-center gap-6 md:gap-16">
+                      <div className="scale-75 md:scale-100 origin-left">
+                        <ServiceIcon title={service.title} />
+                      </div>
+                      <h3 className="text-[24px] md:text-[48px] lg:text-[60px] font-bold uppercase tracking-tight leading-none group-hover:translate-x-2 md:group-hover:translate-x-4 transition-transform duration-500">
                         {service.title}
                       </h3>
                     </div>
-                    <div className="pr-4 md:pr-12 opacity-40 group-hover:opacity-100 transition-opacity">
+                    <div className="pr-2 md:pr-12 opacity-40 group-hover:opacity-100 transition-opacity scale-75 md:scale-100">
                       {isExpanded ? <Minus size={40} strokeWidth={1} /> : <Plus size={40} strokeWidth={1} />}
                     </div>
                   </div>
@@ -101,20 +103,20 @@ export default function Services() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                       >
-                        <div className="pb-24 grid grid-cols-1 xl:grid-cols-2 gap-16 md:gap-24">
+                        <div className="pb-16 md:pb-24 grid grid-cols-1 xl:grid-cols-2 gap-12 md:gap-24">
                           {/* Left Side: Info */}
-                          <div className="flex flex-col space-y-12">
-                            <p className="text-[22px] md:text-[28px] font-medium leading-[1.3] text-white/90 max-w-[500px]">
+                          <div className="flex flex-col space-y-8 md:space-y-12">
+                            <p className="text-[18px] md:text-[28px] font-medium leading-[1.3] text-white/90 max-w-[500px]">
                               {service.description}
                             </p>
 
-                            <div className="space-y-6">
-                              <h4 className="text-[18px] md:text-[20px] font-bold uppercase tracking-[0.1em] text-white/50">
+                            <div className="space-y-4 md:space-y-6">
+                              <h4 className="text-[14px] md:text-[20px] font-bold uppercase tracking-[0.1em] text-white/50">
                                 [ KEY FEATURES ]
                               </h4>
-                              <ul className="space-y-3">
+                              <ul className="space-y-2 md:space-y-3">
                                 {service.features.map((feature, i) => (
-                                  <li key={i} className="text-[20px] md:text-[24px] font-medium text-white/80 list-none pl-0">
+                                  <li key={i} className="text-[16px] md:text-[24px] font-medium text-white/80 list-none pl-0">
                                     - {feature}
                                   </li>
                                 ))}
@@ -123,10 +125,10 @@ export default function Services() {
                           </div>
 
                           {/* Right Side: Visual */}
-                          <div className="flex flex-col items-end">
+                          <div className="flex flex-col items-start xl:items-end">
                             <div className="w-full max-w-[450px]">
                               <div className="flex flex-col space-y-4">
-                                <span className="text-[16px] md:text-[20px] font-bold tracking-widest text-white/50">
+                                <span className="text-[14px] md:text-[20px] font-bold tracking-widest text-white/50">
                                   ( {String(index + 1).padStart(2, '0')} )
                                 </span>
                                 <div className="aspect-[4/3] w-full rounded-[8px] overflow-hidden bg-white/5 border border-white/10 group-hover:border-white/20 transition-colors">

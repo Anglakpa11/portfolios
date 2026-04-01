@@ -157,20 +157,20 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black text-white pt-24 pb-12 px-[40px] w-full overflow-hidden font-sans border-t border-white/5">
+    <footer className="bg-black text-white pt-20 md:pt-24 pb-12 px-[24px] md:px-[40px] w-full overflow-hidden font-sans border-t border-white/5">
       <div className="w-full flex flex-col">
 
-        {/* Branding Section with Magnetic Scramble Effect */}
-        <div className="flex flex-row items-end justify-between mb-16 md:mb-24 px-0 cursor-default group">
+        {/* Branding Section with Magnetic Effect */}
+        <div className="flex flex-row items-end justify-between mb-12 md:mb-24 px-0 cursor-default group">
           <div className="relative flex-1 flex items-end justify-start overflow-visible">
-            <div className="text-[22vw] md:text-[18vw] font-black leading-[0.8] tracking-[-0.05em] uppercase flex pointer-events-none">
+            <div className="text-[25vw] md:text-[18vw] font-black leading-[0.8] tracking-[-0.05em] uppercase flex pointer-events-none">
               <MagneticLetter char="A" index={0} />
               <MagneticLetter char="N" index={1} />
               <MagneticLetter char="G" index={2} />
             </div>
           </div>
 
-          <div className="mb-[2vw] md:mb-[1.5vw] shrink-0">
+          <div className="mb-[4vw] md:mb-[1.5vw] shrink-0">
             <HidingBall />
           </div>
         </div>
@@ -179,21 +179,21 @@ export default function Footer() {
         <div className="w-full h-[1px] bg-white/10 mb-10" />
 
         {/* Info & Navigation Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8 text-[14px] md:text-[18px] font-bold tracking-[0.1em] uppercase">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-10 md:gap-8 text-[12px] md:text-[18px] font-bold tracking-[0.1em] uppercase">
 
           {/* Copyright */}
-          <div className="text-white/40">
+          <div className="text-white/40 order-3 md:order-1">
             ©2024 DESIGNER
           </div>
 
           {/* Right Navigation */}
-          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-14 text-white/90">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14 text-white/90 order-2">
 
             {/* Status & Location */}
             <div className="flex items-center gap-3">
-              <div className="relative flex items-center justify-center w-[20px] h-[20px]">
+              <div className="relative flex items-center justify-center w-[16px] h-[16px] md:w-[20px] md:h-[20px]">
                 <div className="absolute inset-0 border border-white/20 rounded-full" />
-                <div className="w-[8px] h-[8px] bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
+                <div className="w-[6px] h-[6px] md:w-[8px] md:h-[8px] bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
               </div>
               <span className="whitespace-nowrap">KTM, NEPAL</span>
             </div>
@@ -203,7 +203,7 @@ export default function Footer() {
               onClick={scrollToTop}
               className="hover:text-[#6C3BFF] transition-colors duration-300 flex items-center gap-2 group cursor-pointer"
             >
-              BACK TO TOP
+              BACK TO TOP ↗
             </button>
 
           </div>
