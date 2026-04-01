@@ -12,7 +12,7 @@ export default function Process() {
           LET ME SHOW HOW I DO
         </span>
         <h2 className="text-[40px] md:text-[80px] lg:text-[100px] font-bold uppercase leading-[1.1] tracking-tighter text-[#FFFFFF] mb-8">
-          DISCOVER MY WORK METHOD
+          MY WORK METHOD
         </h2>
 
         {/* Subheader accent */}
