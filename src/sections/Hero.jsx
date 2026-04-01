@@ -1,5 +1,4 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import heroImg from '../assets/hero.png';
 import { Timer } from 'lucide-react';
 import CustomCursor from '../components/CustomCursor';
 import FloatingBalls from '../components/FloatingBalls';
@@ -112,19 +111,6 @@ export default function Hero() {
 
       </div>
 
-
-      {/* Right Side Card (Preview Image) - Moved back to right to balance left-aligned text */}
-      <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.8, duration: 1 }}
-          className="absolute hidden md:block top-[180px] right-[40px] w-[260px] lg:w-[320px] h-[160px] lg:h-[200px] rounded-[8px] md:rounded-[12px] bg-[#1a1a1a]/40 backdrop-blur-xl overflow-hidden z-20 border border-white/10"
-      >
-        <img src={heroImg} alt="Preview" className="w-[80%] h-[80%] object-contain mx-auto mt-2 opacity-90" />
-        <div className="absolute bottom-4 left-0 w-full text-center">
-          <p className="text-[10px] tracking-widest text-[#FFFFFF] uppercase">...ND OTHER GENERAL VISUAL DE...</p>
-        </div>
-      </motion.div>
 
       {/* Bottom Right Badges (Moved back from Left) */}
       <motion.div

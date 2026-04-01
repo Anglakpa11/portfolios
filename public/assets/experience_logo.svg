@@ -1,0 +1,11 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  {/* Stylized 'K' / '}{' logo */}
+  <path 
+    d="M12 8V40H22V36H16V12H22V8H12Z" 
+    fill="#6C3BFF" 
+  />
+  <path 
+    d="M36 8V40H26V36H32V12H26V8H36Z" 
+    fill="#6C3BFF" 
+  />
+</svg>

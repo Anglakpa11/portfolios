@@ -54,7 +54,7 @@ export default function SelectedWork() {
       </div>
       
       {/* Pinned Scroll Showcase */}
-      <div ref={containerRef} className="relative mt-8 md:mt-16 w-full h-[300vh]">
+      <div ref={containerRef} className="relative mt-8 md:mt-16 w-full h-[800vh]">
         <div className="sticky top-0 h-screen w-full flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0 z-20 overflow-hidden py-16 md:py-0">
           
           {/* Left Side: Static Image & Metadata Table */}
@@ -69,23 +69,33 @@ export default function SelectedWork() {
                 className="w-full flex flex-col gap-4 md:gap-12"
               >
                 {/* Image Container */}
-                <div className="relative w-full aspect-[16/9] md:aspect-[4/3] rounded-[12px] md:rounded-[16px] overflow-hidden bg-[#111111] border border-white/10 shadow-2xl">
+                <div className="relative w-full aspect-video rounded-[12px] md:rounded-[16px] overflow-hidden bg-[#111111] border border-white/10 shadow-2xl">
                    <img src={activeProject.image} alt={activeProject.title} className="w-full h-full object-cover opacity-90" />
                 </div>
                 
                 {/* Metadata Table */}
                 <div className="w-full flex flex-col border-t border-white/20">
-                   <div className="flex flex-row py-4 md:py-8 border-b border-white/10 gap-6 sm:gap-12 items-start md:items-center">
-                     <h4 className="text-[14px] md:text-[20px] font-bold tracking-widest uppercase text-[#FFFFFF] w-[100px] md:w-[160px] shrink-0">Overview</h4>
-                     <p className="text-[14px] md:text-[20px] leading-relaxed text-[#FFFFFF80] font-medium line-clamp-3 md:line-clamp-none">{activeProject.overview}</p>
+                   <div className="flex flex-row py-4 md:py-6 border-b border-white/10 gap-6 sm:gap-12 items-start">
+                     <h4 className="text-[12px] md:text-[14px] font-bold tracking-[0.2em] uppercase text-white/40 w-[100px] md:w-[140px] shrink-0 pt-1.5">Overview</h4>
+                     <p className="text-[16px] md:text-[20px] leading-relaxed text-white/80 font-medium">{activeProject.overview}</p>
                    </div>
-                   <div className="flex flex-row py-4 md:py-8 border-b border-white/10 gap-6 sm:gap-12 items-center">
-                     <h4 className="text-[14px] md:text-[20px] font-bold tracking-widest uppercase text-[#FFFFFF] w-[100px] md:w-[160px] shrink-0">Industry</h4>
-                     <p className="text-[14px] md:text-[20px] leading-relaxed text-[#FFFFFF80] font-medium">{activeProject.industry}</p>
+                   <div className="flex flex-row py-4 md:py-6 border-b border-white/10 gap-6 sm:gap-12 items-center">
+                     <h4 className="text-[12px] md:text-[14px] font-bold tracking-[0.2em] uppercase text-white/40 w-[100px] md:w-[140px] shrink-0">Industry</h4>
+                     <p className="text-[16px] md:text-[20px] leading-relaxed text-white/80 font-medium">{activeProject.industry}</p>
                    </div>
-                   <div className="flex flex-row py-4 md:py-8 border-b border-white/10 gap-6 sm:gap-12 items-center">
-                     <h4 className="text-[14px] md:text-[20px] font-bold tracking-widest uppercase text-[#FFFFFF] w-[100px] md:w-[160px] shrink-0">Explore</h4>
-                     <a href={activeProject.link} className="text-[14px] md:text-[20px] leading-relaxed text-[#FFFFFF] font-medium underline underline-offset-4 decoration-white/30 hover:decoration-white transition-all">View Details</a>
+                   <div className="flex flex-row py-4 md:py-6 border-b border-white/10 gap-6 sm:gap-12 items-center">
+                     <h4 className="text-[12px] md:text-[14px] font-bold tracking-[0.2em] uppercase text-white/40 w-[100px] md:w-[140px] shrink-0">Explore</h4>
+                     <a 
+                       href={activeProject.link} 
+                       className="group/link flex items-center gap-3 text-[16px] md:text-[20px] leading-relaxed text-white font-bold tracking-tight hover:text-[#6C3BFF] transition-all duration-300"
+                     >
+                       VIEW PROJECT
+                       <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover/link:border-[#6C3BFF] group-hover/link:bg-[#6C3BFF] transition-all duration-300">
+                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform">
+                           <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                         </svg>
+                       </div>
+                     </a>
                    </div>
                 </div>
               </motion.div>
@@ -114,7 +124,7 @@ export default function SelectedWork() {
                          color: isActive ? "#FFFFFF" : "rgba(255, 255, 255, 0.15)",
                        }}
                        transition={{ duration: 0.3, ease: "easeOut" }}
-                       className="text-[clamp(28px,4vw,60px)] lg:text-[clamp(40px,5vw,80px)] font-bold tracking-tighter leading-[1] transition-colors cursor-pointer select-none text-left break-words"
+                       className="text-[clamp(24px,3.5vw,48px)] lg:text-[clamp(32px,4.5vw,72px)] font-bold tracking-tighter leading-[1.1] transition-colors cursor-pointer select-none text-left whitespace-nowrap"
                        onClick={() => {
                           if (containerRef.current) {
                             const rect = containerRef.current.getBoundingClientRect();

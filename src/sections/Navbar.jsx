@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import logo from '../assets/logo.svg';
+import cvPdf from '../assets/Ang cv (2) (1).pdf';
 
 const NavLink = ({ href, children }) => {
   return (
@@ -56,9 +57,15 @@ export default function Navbar() {
           <NavLink href="#about">( ABOUT )</NavLink>
           <NavLink href="#services">( SERVICES )</NavLink>
         </nav>
-        <button className="flex items-center justify-center h-[44px] md:h-[52px] px-[20px] md:px-[24px] bg-white text-black rounded-[8px] font-semibold text-[20px] hover:bg-white/90 transition-colors shrink-0 leading-none">
+        <motion.a 
+          href={cvPdf}
+          download="Ang_Lakpa_Sherpa_CV.pdf"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="flex items-center justify-center h-[44px] md:h-[52px] px-[20px] md:px-[24px] bg-white text-black rounded-[8px] font-semibold text-[20px] hover:bg-white/90 transition-colors shrink-0 leading-none cursor-pointer"
+        >
           Download resume
-        </button>
+        </motion.a>
       </div>
     </motion.header>
   );

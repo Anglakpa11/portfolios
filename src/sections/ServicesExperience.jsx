@@ -75,7 +75,7 @@ export default function ServicesExperience() {
         {/* Services List Area */}
         <div className="flex flex-col lg:flex-row">
           {/* Left space (blank on desktop) */}
-          <div className="hidden lg:block lg:w-1/3 xl:w-1/4" />
+          <div className="hidden lg:block lg:w-1/2" />
           
           {/* Right side (content) */}
           <div className="flex-1 flex flex-col pt-12">
@@ -190,7 +190,7 @@ export default function ServicesExperience() {
         {/* Experience List Area */}
         <div className="flex flex-col lg:flex-row">
           {/* Left space (blank on desktop) */}
-          <div className="hidden lg:block lg:w-1/3 xl:w-1/4" />
+          <div className="hidden lg:block lg:w-1/2" />
           
           {/* Right side (content) */}
           <div className="flex-1 flex flex-col gap-24 pt-12">

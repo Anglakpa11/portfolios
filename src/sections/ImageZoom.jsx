@@ -10,7 +10,7 @@ export default function ImageZoom() {
     offset: ["start end", "end start"]
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1.15, 0.95]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.3, 1]);
 
   return (
     <section ref={containerRef} className="w-full bg-black flex flex-col relative pb-12">
