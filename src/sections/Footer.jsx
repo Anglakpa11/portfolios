@@ -61,8 +61,19 @@ const HidingBall = ({ footerRef }) => {
   const ballRef = React.useRef(null);
   const timerRef = React.useRef(null);
 
+  // Initialize position to the expected starting spot (right side)
+  React.useEffect(() => {
+    if (footerRef.current) {
+      const rect = footerRef.current.getBoundingClientRect();
+      setPos({ 
+        x: rect.width - 150, 
+        y: 100 
+      });
+    }
+  }, [footerRef]);
+
   const teleport = () => {
-    if (isCaught || canBeCaught) return;
+    if (isCaught || canBeCaught || !footerRef.current) return;
     
     if (!isGameStarted) {
       setIsGameStarted(true);
@@ -71,9 +82,13 @@ const HidingBall = ({ footerRef }) => {
       }, 10000);
     }
     
-    // Jump to a random relative position within a larger range
-    const randomX = (Math.random() - 0.7) * 600; // Wider range for "full footer" feel
-    const randomY = (Math.random() - 0.5) * 300;
+    const footerRect = footerRef.current.getBoundingClientRect();
+    const ballSize = 100; // Approx size of the ball
+    
+    // Jump to ANY random position within the footer
+    const randomX = Math.max(20, Math.random() * (footerRect.width - ballSize - 40));
+    const randomY = Math.max(20, Math.random() * (footerRect.height - ballSize - 40));
+    
     setPos({ x: randomX, y: randomY });
   };
 
@@ -85,16 +100,13 @@ const HidingBall = ({ footerRef }) => {
       const { pageX, pageY } = e;
       const rect = ballRef.current.getBoundingClientRect();
       
-      // Calculate ball's center in page coordinates
       const ballCenterX = rect.left + window.scrollX + rect.width / 2;
       const ballCenterY = rect.top + window.scrollY + rect.height / 2;
 
-      // Calculate distance from mouse to ball center
       const dx = pageX - ballCenterX;
       const dy = pageY - ballCenterY;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      // Repel threshold - larger for "full footer" reactive feel
       const threshold = 250; 
 
       if (distance < threshold) {
@@ -119,9 +131,13 @@ const HidingBall = ({ footerRef }) => {
     
     setTimeout(() => {
       setIsCaught(false);
-      setPos({ x: 0, y: 0 });
       setIsGameStarted(false);
       setCanBeCaught(false);
+      // Reset position to right side
+      if (footerRef.current) {
+        const rect = footerRef.current.getBoundingClientRect();
+        setPos({ x: rect.width - 150, y: 100 });
+      }
     }, 2000);
   };
 
@@ -137,8 +153,8 @@ const HidingBall = ({ footerRef }) => {
       onMouseEnter={teleport}
       onClick={handleCatch}
       animate={{ 
-        x: pos.x, 
-        y: pos.y,
+        left: pos.x, 
+        top: pos.y,
         scale: isCaught ? 1.2 : (canBeCaught ? 1.1 : 1),
         backgroundColor: isCaught ? "#D3FF52" : (canBeCaught ? "#6C3BFF" : "#6C3BFF"),
         boxShadow: isCaught 
@@ -150,7 +166,7 @@ const HidingBall = ({ footerRef }) => {
         stiffness: 400, 
         damping: 25
       }}
-      className="w-[12vw] h-[12vw] md:w-[6.5vw] md:h-[6.5vw] rounded-full cursor-pointer pointer-events-auto flex items-center justify-center relative border-2 border-white/10"
+      className="absolute w-[12vw] h-[12vw] md:w-[6.5vw] md:h-[6.5vw] rounded-full cursor-pointer pointer-events-auto flex items-center justify-center border-2 border-white/10 z-50"
     >
       {!isCaught ? (
         <motion.span 
@@ -183,8 +199,11 @@ export default function Footer() {
   };
 
   return (
-    <footer ref={footerRef} className="bg-black text-white pt-20 md:pt-24 pb-12 px-[24px] md:px-[40px] w-full overflow-hidden font-sans border-t border-white/5">
-      <div className="w-full flex flex-col">
+    <footer ref={footerRef} className="bg-black text-white pt-20 md:pt-24 pb-12 px-[24px] md:px-[40px] w-full overflow-visible font-sans border-t border-white/5 relative">
+      <div className="w-full flex flex-col relative z-10">
+
+        {/* Ball is now an absolute child of the relative footer */}
+        <HidingBall footerRef={footerRef} />
 
         {/* Branding Section with Magnetic Effect */}
         <div className="flex flex-row items-end justify-between mb-12 md:mb-24 px-0 cursor-default group">
@@ -196,9 +215,8 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="mb-[4vw] md:mb-[1.5vw] shrink-0">
-            <HidingBall footerRef={footerRef} />
-          </div>
+          {/* Empty space where the ball used to be */}
+          <div className="mb-[4vw] md:mb-[1.5vw] shrink-0 w-[12vw] md:w-[6.5vw] h-[12vw] md:h-[6.5vw]" />
         </div>
 
         {/* Divider line */}

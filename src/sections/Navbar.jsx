@@ -77,7 +77,7 @@ export default function Navbar() {
             <img
               src={logo}
               alt="Logo"
-              className="h-[36px] md:h-[52px] w-auto object-contain hover:opacity-80 transition-opacity"
+              className="h-[42px] md:h-[52px] w-auto object-contain hover:opacity-80 transition-opacity"
             />
           </a>
         </div>
@@ -88,7 +88,7 @@ export default function Navbar() {
             <NavLink href="#about">( ABOUT )</NavLink>
             <NavLink href="#services">( SERVICES )</NavLink>
           </nav>
-          <motion.a 
+          <motion.a
             href={cvPdf}
             download="Ang_Lakpa_Sherpa_CV.pdf"
             whileHover={{ scale: 1.05 }}
@@ -100,22 +100,22 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Toggle */}
-        <button 
+        <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden flex flex-col gap-1.5 z-50 p-2"
           aria-label="Toggle Menu"
         >
-          <motion.div 
+          <motion.div
             animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 8 : 0 }}
-            className="w-8 h-[2px] bg-white rounded-full" 
+            className="w-8 h-[2px] bg-white rounded-full"
           />
-          <motion.div 
+          <motion.div
             animate={{ opacity: isOpen ? 0 : 1 }}
-            className="w-8 h-[2px] bg-white rounded-full" 
+            className="w-8 h-[2px] bg-white rounded-full"
           />
-          <motion.div 
+          <motion.div
             animate={{ rotate: isOpen ? -45 : 0, y: isOpen ? -8 : 0 }}
-            className="w-8 h-[2px] bg-white rounded-full" 
+            className="w-8 h-[2px] bg-white rounded-full"
           />
         </button>
       </motion.header>
@@ -138,7 +138,7 @@ export default function Navbar() {
                 <NavLink href="#services" onClick={() => setIsOpen(false)}>( SERVICES )</NavLink>
               </motion.div>
               <motion.div variants={itemVariants}>
-                <motion.a 
+                <motion.a
                   href={cvPdf}
                   download="Ang_Lakpa_Sherpa_CV.pdf"
                   className="inline-block text-[32px] font-bold text-[#6C3BFF] mt-8"
@@ -149,7 +149,7 @@ export default function Navbar() {
               </motion.div>
             </nav>
 
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="absolute bottom-[40px] left-[40px] text-white/40 text-[14px] font-bold tracking-widest uppercase"
             >
