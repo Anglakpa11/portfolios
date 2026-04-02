@@ -65,6 +65,8 @@ export default function SelectedWork() {
               <p className="text-white/60 text-[14px] leading-relaxed mb-4">{project.overview}</p>
               <a 
                 href={project.link} 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 text-[14px] text-white font-bold tracking-tight uppercase border-b border-white/20 pb-2 w-max"
               >
                 VIEW PROJECT ↘
@@ -108,6 +110,8 @@ export default function SelectedWork() {
                      <h4 className="text-[14px] font-bold tracking-[0.2em] uppercase text-white/40 w-[140px] shrink-0">Explore</h4>
                      <a 
                        href={activeProject.link} 
+                       target="_blank"
+                       rel="noopener noreferrer"
                        className="group/link flex items-center gap-3 text-[20px] leading-relaxed text-white font-bold tracking-tight hover:text-[#6C3BFF] transition-all duration-300"
                      >
                        VIEW PROJECT

@@ -50,10 +50,10 @@ export default function About() {
 
             <div className="flex flex-row items-center gap-8 md:gap-12">
               <div className="flex flex-col">
-                <h2 className="text-[clamp(44px,12vw,60px)] md:text-[80px] lg:text-[120px] font-bold uppercase leading-[1] tracking-[-0.02em] text-[#FFFFFF]">
+                <h2 className="text-[clamp(36px,10vw,48px)] md:text-[64px] lg:text-[96px] font-bold uppercase leading-[1] tracking-[-0.02em] text-[#FFFFFF]">
                   ABOUT ME
                 </h2>
-                <p className="text-[12px] md:text-[20px] font-bold uppercase tracking-wide text-[#FFFFFF] mt-2 md:mt-4 opacity-70">
+                <p className="text-[10px] md:text-[16px] font-bold uppercase tracking-wide text-[#FFFFFF] mt-2 md:mt-4 opacity-70">
                   FROM KATHMANDU - UXUI DESIGNER
                 </p>
               </div>
@@ -68,7 +68,7 @@ export default function About() {
                 onClick={(e) => e.stopPropagation()} 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#6C3BFF] px-5 md:px-6 py-2 md:py-3 rounded-[4px] text-white text-[10px] md:text-[14px] font-bold tracking-[0.1em] uppercase cursor-pointer hover:bg-[#5a2ee0] transition-colors inline-block"
+                className="bg-[#6C3BFF] px-5 md:px-6 py-2 md:py-3 rounded-[4px] text-white text-[9px] md:text-[12px] font-bold tracking-[0.1em] uppercase cursor-pointer hover:bg-[#5a2ee0] transition-colors inline-block"
               >
                 DOWNLOAD RESUME
               </motion.a>
@@ -82,7 +82,7 @@ export default function About() {
               {/* Bio Block */}
               <div className="flex flex-col gap-6">
 
-                <div className="text-[clamp(18px,4.5vw,28px)] md:text-[32px] lg:text-[42px] leading-[1.3] font-medium text-[#FFFFFF]">
+                <div className="text-[clamp(15px,3.8vw,23px)] md:text-[26px] lg:text-[34px] leading-[1.3] font-medium text-[#FFFFFF]">
                   <ScrollRevealText text={PORTFOLIO_DATA.about.bio} progress={bioProgress} />
                 </div>
               </div>

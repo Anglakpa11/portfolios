@@ -23,7 +23,7 @@ export default function Hero() {
             className="flex items-center gap-3 mb-4"
         >
           <Timer size={18} className="text-accent" />
-          <span className="text-[#FFFFFF] text-[12px] md:text-[18px] font-medium tracking-[0.1em] mt-0.5 uppercase">
+          <span className="text-[#FFFFFF] text-[10px] md:text-[15px] font-medium tracking-[0.1em] mt-0.5 uppercase">
             KICKSTART YOUR UI/UX PROJECT
           </span>
         </motion.div>
@@ -32,7 +32,7 @@ export default function Hero() {
         <motion.div
             initial="initial"
             whileHover="hover"
-            className="flex flex-col items-start font-black leading-[0.85] md:leading-[0.8] tracking-[-0.04em] text-[#FFFFFF] cursor-default text-[clamp(44px,14vw,60px)] md:text-[140px] lg:text-[160px] relative z-10 select-none"
+            className="flex flex-col items-start font-black leading-[0.85] md:leading-[0.8] tracking-[-0.04em] text-[#FFFFFF] cursor-default text-[clamp(36px,12vw,48px)] md:text-[110px] lg:text-[130px] relative z-10 select-none"
         >
           {/* First Row: UX/UI -> ANG */}
           <div className="relative overflow-hidden h-max w-max flex items-center">
@@ -123,7 +123,7 @@ export default function Hero() {
           href="#work"
           initial="initial"
           whileHover="hover"
-          className="relative overflow-hidden block text-[#FFFFFF] hover:text-[#FFFFFF] transition-colors text-[16px] md:text-[20px] font-medium"
+          className="relative overflow-hidden block text-[#FFFFFF] hover:text-[#FFFFFF] transition-colors text-[14px] md:text-[17px] font-medium"
         >
           <motion.div
             variants={{
@@ -146,8 +146,8 @@ export default function Hero() {
           </motion.div>
         </motion.a>
 
-        <div className="h-[40px] md:h-[52px] px-[14px] md:px-[20px] rounded-full bg-white text-black text-[12px] md:text-[16px] flex items-center gap-2 font-bold tracking-tight">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="md:w-[14px] md:h-[14px]">
+        <div className="h-[34px] md:h-[42px] px-[14px] md:px-[20px] rounded-full bg-white text-black text-[10px] md:text-[14px] flex items-center gap-2 font-bold tracking-tight">
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="md:w-[12px] md:h-[12px]">
             <path d="M6 0L12 6L6 12L0 6L6 0Z" fill="black" />
           </svg>
         </div>

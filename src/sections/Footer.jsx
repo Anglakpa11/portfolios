@@ -125,13 +125,13 @@ const HidingBall = () => {
         stiffness: 400, 
         damping: 25
       }}
-      className="w-[12vw] h-[12vw] md:w-[8vw] md:h-[8vw] rounded-full cursor-pointer pointer-events-auto flex items-center justify-center relative border-2 border-white/10"
+      className="w-[12vw] h-[12vw] md:w-[6.5vw] md:h-[6.5vw] rounded-full cursor-pointer pointer-events-auto flex items-center justify-center relative border-2 border-white/10"
     >
       {!isCaught ? (
         <motion.span 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-white font-black text-[10px] md:text-[14px] whitespace-nowrap text-center leading-tight px-2"
+          className="text-white font-black text-[10px] md:text-[11px] whitespace-nowrap text-center leading-tight px-2"
         >
           {canBeCaught ? "CLICK\nME" : (isGameStarted ? "NOT\n YET!" : "CATCH\nME")}
         </motion.span>
@@ -139,7 +139,7 @@ const HidingBall = () => {
         <motion.span 
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="text-black font-black text-[10px] md:text-[14px] whitespace-nowrap"
+          className="text-black font-black text-[10px] md:text-[11px] whitespace-nowrap"
         >
           GO!!
         </motion.span>
@@ -163,7 +163,7 @@ export default function Footer() {
         {/* Branding Section with Magnetic Effect */}
         <div className="flex flex-row items-end justify-between mb-12 md:mb-24 px-0 cursor-default group">
           <div className="relative flex-1 flex items-end justify-start overflow-visible">
-            <div className="text-[25vw] md:text-[18vw] font-black leading-[0.8] tracking-[-0.05em] uppercase flex pointer-events-none">
+            <div className="text-[20vw] md:text-[14vw] font-black leading-[0.8] tracking-[-0.05em] uppercase flex pointer-events-none">
               <MagneticLetter char="A" index={0} />
               <MagneticLetter char="N" index={1} />
               <MagneticLetter char="G" index={2} />
@@ -179,7 +179,7 @@ export default function Footer() {
         <div className="w-full h-[1px] bg-white/10 mb-10" />
 
         {/* Info & Navigation Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-10 md:gap-8 text-[12px] md:text-[18px] font-bold tracking-[0.1em] uppercase">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-10 md:gap-8 text-[11px] md:text-[15px] font-bold tracking-[0.1em] uppercase">
 
           {/* Copyright */}
           <div className="text-white/40 order-3 md:order-1">
