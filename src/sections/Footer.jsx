@@ -199,7 +199,7 @@ export default function Footer() {
   };
 
   return (
-    <footer ref={footerRef} className="bg-black text-white pt-20 md:pt-24 pb-12 px-[24px] md:px-[40px] w-full overflow-visible font-sans border-t border-white/5 relative">
+    <footer ref={footerRef} className="bg-black text-white pt-20 md:pt-24 pb-12 px-[24px] md:px-[40px] w-full overflow-hidden font-sans border-t border-white/5 relative">
       <div className="w-full flex flex-col relative z-10">
 
         {/* Ball is now an absolute child of the relative footer */}
