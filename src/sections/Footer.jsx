@@ -53,11 +53,12 @@ const MagneticLetter = ({ char, index }) => {
   );
 };
 
-const HidingBall = () => {
+const HidingBall = ({ footerRef }) => {
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [isCaught, setIsCaught] = useState(false);
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [canBeCaught, setCanBeCaught] = useState(false);
+  const ballRef = React.useRef(null);
   const timerRef = React.useRef(null);
 
   const teleport = () => {
@@ -65,33 +66,55 @@ const HidingBall = () => {
     
     if (!isGameStarted) {
       setIsGameStarted(true);
-      // Start the 5-second timer on first interaction
       timerRef.current = setTimeout(() => {
         setCanBeCaught(true);
       }, 5000);
     }
     
-    // Jump to a random relative position
-    // Since the ball is on the right side, we jump primarily to the left (-X)
-    const randomX = Math.random() * -300; 
-    const randomY = (Math.random() - 0.5) * 160;
+    // Jump to a random relative position within a larger range
+    const randomX = (Math.random() - 0.7) * 600; // Wider range for "full footer" feel
+    const randomY = (Math.random() - 0.5) * 300;
     setPos({ x: randomX, y: randomY });
   };
 
+  // Mouse tracking logic - Repel from across the footer
+  React.useEffect(() => {
+    const handleGlobalMouseMove = (e) => {
+      if (!ballRef.current || isCaught || canBeCaught) return;
+
+      const { clientX, clientY } = e;
+      const rect = ballRef.current.getBoundingClientRect();
+      const ballCenterX = rect.left + rect.width / 2;
+      const ballCenterY = rect.top + rect.height / 2;
+
+      // Calculate distance
+      const dx = clientX - ballCenterX;
+      const dy = clientY - ballCenterY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      // Repel threshold (e.g., 180px)
+      const threshold = 180;
+
+      if (distance < threshold) {
+        teleport();
+      }
+    };
+
+    window.addEventListener('mousemove', handleGlobalMouseMove);
+    return () => window.removeEventListener('mousemove', handleGlobalMouseMove);
+  }, [isCaught, canBeCaught, isGameStarted]);
+
   const handleCatch = (e) => {
     if (!canBeCaught) {
-      // If they click before it's catchable, just teleport
       teleport();
       return;
     }
     
     setIsCaught(true);
-    // Celebrating before scrolling
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 300);
     
-    // Reset after a delay
     setTimeout(() => {
       setIsCaught(false);
       setPos({ x: 0, y: 0 });
@@ -100,7 +123,6 @@ const HidingBall = () => {
     }, 2000);
   };
 
-  // Cleanup timer on unmount
   React.useEffect(() => {
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
@@ -109,6 +131,7 @@ const HidingBall = () => {
 
   return (
     <motion.div
+      ref={ballRef}
       onMouseEnter={teleport}
       onClick={handleCatch}
       animate={{ 
@@ -149,6 +172,7 @@ const HidingBall = () => {
 };
 
 export default function Footer() {
+  const footerRef = React.useRef(null);
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -157,7 +181,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black text-white pt-20 md:pt-24 pb-12 px-[24px] md:px-[40px] w-full overflow-hidden font-sans border-t border-white/5">
+    <footer ref={footerRef} className="bg-black text-white pt-20 md:pt-24 pb-12 px-[24px] md:px-[40px] w-full overflow-hidden font-sans border-t border-white/5">
       <div className="w-full flex flex-col">
 
         {/* Branding Section with Magnetic Effect */}
@@ -171,7 +195,7 @@ export default function Footer() {
           </div>
 
           <div className="mb-[4vw] md:mb-[1.5vw] shrink-0">
-            <HidingBall />
+            <HidingBall footerRef={footerRef} />
           </div>
         </div>
 
