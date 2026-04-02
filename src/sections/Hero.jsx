@@ -146,7 +146,7 @@ export default function Hero() {
           </motion.div>
         </motion.a>
 
-        <div className="h-[34px] md:h-[42px] px-[14px] md:px-[20px] rounded-full bg-white text-black text-[10px] md:text-[14px] flex items-center gap-2 font-bold tracking-tight">
+        <div className="hidden md:flex h-[34px] md:h-[42px] px-[14px] md:px-[20px] rounded-full bg-white text-black text-[10px] md:text-[14px] items-center gap-2 font-bold tracking-tight">
           <svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="md:w-[12px] md:h-[12px]">
             <path d="M6 0L12 6L6 12L0 6L6 0Z" fill="black" />
           </svg>
