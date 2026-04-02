@@ -1,7 +1,7 @@
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import Section from '../components/Section';
 import { motion } from 'framer-motion';
-import avatar from '../assets/cta_avatar.png';
+
 
 export default function Contact() {
   const { socials } = PORTFOLIO_DATA;
@@ -32,7 +32,7 @@ export default function Contact() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-[14px] md:text-[18px] lg:text-[20px] font-bold uppercase tracking-[0.05em] leading-[1.6] text-white/70 max-w-[600px] mb-12 md:mb-16 italic"
+            className="text-[14px] md:text-[18px] lg:text-[20px] font-bold uppercase tracking-[0.05em] leading-[1.6] text-white/70 max-w-[600px] mb-12 md:mb-16"
           >
             “PASSIONATE ABOUT CREATING CLEAN, FUNCTIONAL, AND VISUALLY ENGAGING APPLICATIONS THAT MAKE A DIFFERENCE.”
           </motion.p>
@@ -67,10 +67,10 @@ export default function Contact() {
           whileInView={{ opacity: 1, scale: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full max-w-[320px] md:max-w-[500px] lg:max-w-[600px] aspect-[4/5] relative rounded-2xl overflow-hidden group border border-white/10 shrink-0"
+          className="w-full max-w-[320px] md:max-w-[500px] lg:max-w-[600px] aspect-[4/5] relative rounded-2xl overflow-hidden group shrink-0"
         >
           <img
-            src={avatar}
+            src="/assets/anglakpa.png"
             alt="Ang Lakpa Sherpa Avatar"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />

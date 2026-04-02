@@ -26,10 +26,10 @@ const ScrollBanner = ({ src }) => {
   return (
     <div ref={containerRef} className="w-full h-[60vh] md:h-screen overflow-hidden relative">
       <motion.div style={{ scale }} className="w-full h-full">
-        <img 
-          src={src} 
-          alt="End Banner" 
-          className="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 transition-all duration-700" 
+        <img
+          src={src}
+          alt="End Banner"
+          className="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 transition-all duration-700"
         />
       </motion.div>
     </div>
@@ -64,8 +64,8 @@ function App() {
               <TechStack />
 
               {/* Full Size Image Banner (Outside Stack) */}
-              <ScrollBanner src="/assets/work6.png" />
-              
+              <ScrollBanner src="/assets/last.jpg" />
+
               <Contact />
             </main>
             <Footer />

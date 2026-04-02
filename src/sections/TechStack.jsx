@@ -16,11 +16,11 @@ const TechIcon = ({ name }) => {
   if (!iconUrl) return null;
 
   return (
-    <div className="w-[32px] h-[32px] md:w-[40px] md:h-[40px] flex items-center justify-center">
+    <div className="w-[50px] md:w-[60px] flex items-center justify-center">
       <img
         src={iconUrl}
         alt={name}
-        className="w-full h-full object-contain filter invert opacity-90 group-hover:opacity-100 transition-opacity"
+        className="w-full h-auto object-contain filter invert opacity-90 group-hover:opacity-100 transition-opacity"
       />
     </div>
   );
@@ -38,7 +38,7 @@ export default function TechStack() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0 }}
-              className="text-[clamp(36px,10vw,50px)] md:text-[6vw] lg:text-[96px] font-bold uppercase leading-[0.8] tracking-[-0.04em] mb-4 md:mb-6 order-1"
+              className="text-[clamp(48px,12vw,64px)] md:text-[8vw] lg:text-[120px] font-bold uppercase leading-[0.8] tracking-[-0.04em] mb-4 md:mb-6 order-1"
             >
               CREATIVE STACK
             </motion.h2>
@@ -47,7 +47,7 @@ export default function TechStack() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-              className="text-[10px] md:text-[14px] font-bold uppercase tracking-[0.05em] leading-[1.4] text-white/70 order-2 mt-2"
+              className="text-[12px] md:text-[18px] font-bold uppercase tracking-[0.05em] leading-[1.4] text-white/70 order-2 mt-2"
             >
               EXPLORE MY CURATED <span className="underline decoration-[#6C3BFF] underline-offset-8 decoration-2 text-white">TOP DESIGN PICS</span>
             </motion.p>
@@ -73,7 +73,7 @@ export default function TechStack() {
           {PORTFOLIO_DATA.stack.map((item, index) => (
             <motion.div
               key={index}
-              className="group flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 py-8 md:py-12 border-t border-white/5 first:pt-0 first:border-0"
+              className="group flex flex-col md:flex-row gap-6 md:gap-16 pt-8 md:pt-12 border-t border-white/5 first:border-0"
               initial="initial"
               whileInView="animate"
               whileHover="hover"
@@ -84,23 +84,16 @@ export default function TechStack() {
                 hover: {}
               }}
             >
-              {/* Icon & Percent Box (Left side of list item) */}
-              <div className="flex items-center gap-6 shrink-0 w-full md:w-[120px] lg:w-[150px]">
-                <div className="scale-90 md:scale-100 origin-left">
-                  <TechIcon name={item.name} />
-                </div>
-                <div className="md:hidden ml-auto">
-                   <span className="text-[10px] font-bold uppercase text-white/40 px-2 py-0.5 border border-white/10 rounded-sm bg-white/5">
-                    {item.percent}
-                  </span>
-                </div>
+              {/* Icon Column */}
+              <div className="pt-1 scale-75 md:scale-100 origin-left">
+                <TechIcon name={item.name} />
               </div>
 
-              {/* Content Area (Right side of list item) */}
-              <div className="flex-1 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-12 w-full">
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-4">
-                    <div className="relative overflow-hidden h-[20px] md:h-[28px] flex items-center">
+              {/* Content Column */}
+              <div className="flex-1 space-y-4">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                  <div className="space-y-1">
+                    <div className="relative overflow-hidden h-[24px] md:h-[40px] flex items-center">
                       {/* Slide Out: Original */}
                       <div className="flex">
                         {item.name.toUpperCase().split("").map((char, charIndex) => (
@@ -112,7 +105,7 @@ export default function TechStack() {
                               hover: { x: "-110%", opacity: 0 }
                             }}
                             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: charIndex * 0.02 }}
-                            className="text-[15px] md:text-[22px] font-black uppercase tracking-tight text-white inline-block leading-none"
+                            className="text-[24px] md:text-[40px] font-bold uppercase leading-none tracking-tight text-white inline-block"
                           >
                             {char === " " ? "\u00A0" : char}
                           </motion.span>
@@ -130,23 +123,25 @@ export default function TechStack() {
                               hover: { x: 0, opacity: 1 }
                             }}
                             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: charIndex * 0.02 + 0.1 }}
-                            className="text-[15px] md:text-[22px] font-black uppercase tracking-tight text-[#6C3BFF] inline-block leading-none"
+                            className="text-[24px] md:text-[40px] font-bold uppercase leading-none tracking-tight text-[#6C3BFF] inline-block"
                           >
                             {char === " " ? "\u00A0" : char}
                           </motion.span>
                         ))}
                       </div>
                     </div>
-                    <span className="hidden md:inline-block text-[10px] md:text-[12px] font-bold uppercase text-white/40 px-2 py-0.5 border border-white/10 rounded-sm bg-white/5">
+                    <p className="text-[14px] md:text-[20px] font-bold uppercase tracking-wider text-white/50">
+                      {item.type}
+                    </p>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-[12px] md:text-[18px] font-bold tracking-[0.05em] uppercase text-white px-3 md:px-4 py-1 border border-white/10 rounded-sm bg-white/5">
                       {item.percent}
                     </span>
                   </div>
-                  <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">
-                    {item.type}
-                  </span>
                 </div>
 
-                <p className="max-w-[450px] text-[11px] md:text-[13px] leading-relaxed text-white/50 group-hover:text-white/80 transition-colors duration-300 font-medium">
+                <p className="text-[16px] md:text-[24px] leading-relaxed text-white/70 max-w-[900px] font-medium group-hover:text-white transition-colors duration-300">
                   {item.desc}
                 </p>
               </div>

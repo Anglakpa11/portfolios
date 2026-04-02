@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Section from '../components/Section';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
@@ -10,19 +10,29 @@ export default function Motivation() {
   });
 
   const scale = useTransform(scrollYProgress, [0, 1], [1.3, 1]);
+  const [isColorful, setIsColorful] = useState(false);
 
   return (
     <Section id="motivation" className="bg-black text-white px-[24px] md:px-[40px] pt-0 pb-20 md:pb-32">
       {/* Full Screen Image */}
-      <div 
+      <div
         ref={containerRef}
         className="w-[calc(100%+48px)] md:w-[calc(100%+80px)] -mx-[24px] md:-mx-[40px] h-[60vh] md:h-screen mb-16 md:mb-[120px] overflow-hidden relative"
       >
-        <motion.div style={{ scale }} className="w-full h-full">
-          <img
-            src="/assets/work5.png"
+        <motion.div 
+          style={{ scale }} 
+          className="w-full h-full cursor-pointer"
+          onClick={() => setIsColorful(!isColorful)}
+        >
+          <motion.img
+            src="/assets/ang.jpg"
             alt="Motivation Cover"
-            className="w-full h-full object-cover grayscale opacity-60"
+            className="w-full h-full object-cover"
+            animate={{ 
+              filter: isColorful ? "grayscale(0%)" : "grayscale(100%)",
+              opacity: isColorful ? 1 : 0.6
+            }}
+            transition={{ duration: 2, ease: "easeInOut" }}
           />
         </motion.div>
       </div>
@@ -32,7 +42,7 @@ export default function Motivation() {
         <div className="z-20 bg-black pt-8 md:pt-[60px] pb-8 md:pb-12">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 md:gap-12">
             <div className="max-w-[800px] flex flex-col">
-              <motion.h2 
+              <motion.h2
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -41,7 +51,7 @@ export default function Motivation() {
               >
                 MOTIVATION
               </motion.h2>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
