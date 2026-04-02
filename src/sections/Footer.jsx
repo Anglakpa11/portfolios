@@ -68,7 +68,7 @@ const HidingBall = ({ footerRef }) => {
       setIsGameStarted(true);
       timerRef.current = setTimeout(() => {
         setCanBeCaught(true);
-      }, 5000);
+      }, 10000);
     }
     
     // Jump to a random relative position within a larger range
@@ -82,18 +82,20 @@ const HidingBall = ({ footerRef }) => {
     const handleGlobalMouseMove = (e) => {
       if (!ballRef.current || isCaught || canBeCaught) return;
 
-      const { clientX, clientY } = e;
+      const { pageX, pageY } = e;
       const rect = ballRef.current.getBoundingClientRect();
-      const ballCenterX = rect.left + rect.width / 2;
-      const ballCenterY = rect.top + rect.height / 2;
+      
+      // Calculate ball's center in page coordinates
+      const ballCenterX = rect.left + window.scrollX + rect.width / 2;
+      const ballCenterY = rect.top + window.scrollY + rect.height / 2;
 
-      // Calculate distance
-      const dx = clientX - ballCenterX;
-      const dy = clientY - ballCenterY;
+      // Calculate distance from mouse to ball center
+      const dx = pageX - ballCenterX;
+      const dy = pageY - ballCenterY;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      // Repel threshold (e.g., 180px)
-      const threshold = 180;
+      // Repel threshold - larger for "full footer" reactive feel
+      const threshold = 250; 
 
       if (distance < threshold) {
         teleport();
@@ -156,7 +158,7 @@ const HidingBall = ({ footerRef }) => {
           animate={{ opacity: 1 }}
           className="text-white font-black text-[10px] md:text-[11px] whitespace-nowrap text-center leading-tight px-2"
         >
-          {canBeCaught ? "CLICK\nME" : (isGameStarted ? "NOT\n YET!" : "CATCH\nME")}
+          {canBeCaught ? "CLICK\nME" : (isGameStarted ? "CAN'T\nSEE ME" : "CATCH\nME")}
         </motion.span>
       ) : (
         <motion.span 
