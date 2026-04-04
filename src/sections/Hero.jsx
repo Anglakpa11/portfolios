@@ -1,8 +1,38 @@
+import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Timer } from 'lucide-react';
 import CustomCursor from '../components/CustomCursor';
 import FloatingBalls from '../components/FloatingBalls';
+
 export default function Hero() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [autoHover, setAutoHover] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      
+      if (!mobile) {
+        setAutoHover(false);
+      }
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    let interval;
+    if (isMobile) {
+      interval = setInterval(() => {
+        setAutoHover(prev => !prev);
+      }, 3000);
+    }
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      if (interval) clearInterval(interval);
+    };
+  }, [isMobile]);
   const { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 0.3], [1.1, 0.9]);
 
@@ -32,6 +62,7 @@ export default function Hero() {
         <motion.div
             initial="initial"
             whileHover="hover"
+            animate={autoHover ? "hover" : "initial"}
             className="flex flex-col items-start font-black leading-[0.85] md:leading-[0.8] tracking-[-0.04em] text-[#FFFFFF] cursor-default text-[clamp(36px,12vw,48px)] md:text-[110px] lg:text-[130px] relative z-10 select-none"
         >
           {/* First Row: UX/UI -> ANG */}

@@ -38,7 +38,7 @@ export default function About() {
     <Section id="about" className="pt-0 pb-0 !p-0 mb-[40px]">
       <div
         ref={containerRef}
-        className="h-[250vh] md:h-[400vh] relative w-full cursor-pointer"
+        className="h-[250vh] md:h-[400vh] relative w-full cursor-pointer text-justify"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleGlobalDownload}
@@ -82,7 +82,7 @@ export default function About() {
               {/* Bio Block */}
               <div className="flex flex-col gap-6">
 
-                <div className="text-[clamp(15px,3.8vw,23px)] md:text-[26px] lg:text-[34px] leading-[1.3] font-medium text-[#FFFFFF]">
+                <div className="text-[clamp(15px,3.8vw,23px)] md:text-[26px] lg:text-[34px] leading-[1.3] font-medium text-[#FFFFFF] text-justify">
                   <ScrollRevealText text={PORTFOLIO_DATA.about.bio} progress={bioProgress} />
                 </div>
               </div>

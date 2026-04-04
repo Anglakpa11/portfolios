@@ -13,7 +13,7 @@ export default function ScrollRevealText({ text, className = "", progress: exter
   const words = text.split(" ");
 
   return (
-    <span ref={containerRef} className={`flex flex-wrap ${className}`}>
+    <span ref={containerRef} className={`${className} block`}>
       {words.map((word, i) => {
         const start = i / words.length;
         const end = start + (1 / words.length);
