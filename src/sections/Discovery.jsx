@@ -1,10 +1,18 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import Section from '../components/Section';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function Discovery() {
   const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -12,14 +20,13 @@ export default function Discovery() {
   });
 
   // Calculate the horizontal shift based on the number of process steps
-  // (Steps - 1) * 100vw if each step is full screen, but I'll use a staggered feel.
   const x = useTransform(scrollYProgress, [0.1, 1], ["0%", "-80%"]);
 
   return (
     <Section id="process" className="p-0 border-t border-white/10">
-      <div ref={containerRef} className="h-[400vh] md:h-[500vh] relative w-full bg-black">
+      <div ref={containerRef} className="h-auto md:h-[500vh] relative w-full bg-black">
 
-        <div className="sticky top-0 h-screen w-full flex flex-col overflow-hidden">
+        <div className="md:sticky md:top-0 md:h-screen relative w-full flex flex-col overflow-hidden">
 
           {/* Centered Header Block (Top Pinned) */}
           <div className="flex flex-col items-center text-center pt-4 md:pt-8 pb-1 md:pb-2 z-30 px-[24px]">
@@ -43,18 +50,18 @@ export default function Discovery() {
             </motion.span>
           </div>
 
-          {/* Horizontal Scrubbing Track */}
-          <div className="flex-1 flex items-center relative gap-0">
+          {/* Horizontal/Vertical Track */}
+          <div className="flex-1 flex items-center relative gap-0 py-20 md:py-0">
             <motion.div
-              style={{ x }}
-              className="flex flex-row items-center md:cursor-none"
+              style={{ x: isMobile ? 0 : x }}
+              className="flex flex-col md:flex-row items-center md:cursor-none gap-20 md:gap-0"
             >
               {PORTFOLIO_DATA.process.map((step, idx) => (
                 <div
                   key={step.id}
-                  className="w-[100vw] shrink-0 flex flex-col items-center justify-center px-[24px] md:px-[5vw]"
+                  className="w-full md:w-[100vw] shrink-0 flex flex-col items-center justify-center px-[24px] md:px-[5vw]"
                 >
-                  <div className="w-full h-full flex flex-col lg:flex-row items-stretch bg-[#0A0A0A] lg:bg-transparent rounded-xl overflow-hidden border border-white/5 lg:border-0">
+                  <div className="w-full h-auto flex flex-col lg:flex-row items-stretch bg-[#0A0A0A] lg:bg-transparent rounded-xl overflow-hidden border border-white/5 lg:border-0">
 
                     {/* Left: Content Block (50%) */}
                     <div className="flex-[1] flex flex-col justify-center px-6 md:px-[5vw] lg:px-[8vw] py-6 md:py-12 order-2 lg:order-1">
@@ -83,13 +90,8 @@ export default function Discovery() {
                     </div>
 
                     {/* Right: Full-Size Image Column (50%) */}
-                    <div className="flex-1 w-full relative h-[300px] md:h-[40vh] lg:h-auto order-1 lg:order-2">
-                      <motion.div
-                        className="absolute inset-0 bg-[#111111]"
-                        initial={{ opacity: 1 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1 }}
-                      >
+                    <div className="flex-1 w-full relative h-[300px] md:h-[40vh] lg:h-auto order-1 lg:order-2 overflow-hidden">
+                      <div className="md:absolute md:inset-0 w-full h-full bg-[#111111]">
                         <img
                           src={step.image}
                           alt={step.title}
@@ -98,7 +100,7 @@ export default function Discovery() {
                         {/* Subtle gradient overlay to blend image edge */}
                         <div className="hidden lg:block absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent" />
                         <div className="lg:hidden absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black to-transparent" />
-                      </motion.div>
+                      </div>
                     </div>
 
                   </div>
@@ -107,8 +109,8 @@ export default function Discovery() {
             </motion.div>
           </div>
 
-          {/* Progress Indicator (Bottom) */}
-          <div className="absolute bottom-[20px] md:bottom-[40px] left-[24px] md:left-[40px] right-[24px] md:right-[40px] flex justify-between items-center z-30">
+          {/* Progress Indicator (Hidden on Mobile) */}
+          <div className="hidden md:flex absolute bottom-[20px] md:bottom-[40px] left-[24px] md:left-[40px] right-[24px] md:right-[40px] justify-between items-center z-30">
             <div className="flex gap-2">
               {PORTFOLIO_DATA.process.map((_, i) => (
                 <motion.div
