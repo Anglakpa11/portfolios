@@ -19,7 +19,19 @@ export default function CustomCursor() {
   // Dynamic scaling and dimensions
   const scale = useSpring(isNear && cursorMode === 'default' ? 1.5 : 1, springConfig);
 
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
     const handleMouseMove = (e) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
@@ -43,7 +55,9 @@ export default function CustomCursor() {
       window.removeEventListener('cursorNearBall', handleNearBall);
       window.removeEventListener('updateCursor', handleCursorUpdate);
     };
-  }, [isVisible, mouseX, mouseY]);
+  }, [isVisible, mouseX, mouseY, isMobile]);
+
+  if (isMobile) return null;
 
   return (
     <motion.div
@@ -82,3 +96,4 @@ export default function CustomCursor() {
     </motion.div>
   );
 }
+

@@ -47,7 +47,7 @@ export default function Discovery() {
           <div className="flex-1 flex items-center relative gap-0">
             <motion.div
               style={{ x }}
-              className="flex flex-row items-center cursor-none"
+              className="flex flex-row items-center md:cursor-none"
             >
               {PORTFOLIO_DATA.process.map((step, idx) => (
                 <div
@@ -83,17 +83,17 @@ export default function Discovery() {
                     </div>
 
                     {/* Right: Full-Size Image Column (50%) */}
-                    <div className="flex-1 w-full relative h-[20vh] lg:h-auto order-1 lg:order-2">
+                    <div className="flex-1 w-full relative h-[300px] md:h-[40vh] lg:h-auto order-1 lg:order-2">
                       <motion.div
                         className="absolute inset-0 bg-[#111111]"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
+                        initial={{ opacity: 1 }}
+                        animate={{ opacity: 1 }}
                         transition={{ duration: 1 }}
                       >
                         <img
                           src={step.image}
                           alt={step.title}
-                          className="w-full h-full object-cover opacity-50 lg:opacity-80"
+                          className="w-full h-full object-cover opacity-100 lg:opacity-80"
                         />
                         {/* Subtle gradient overlay to blend image edge */}
                         <div className="hidden lg:block absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent" />
